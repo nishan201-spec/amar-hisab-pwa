@@ -1,0 +1,14 @@
+{
+  "id": "./",
+  "name": "আমার হিসাব — আয় ব্যয় ও দেনা পাওনা",
+  "short_name": "আমার হিসাব",
+  "description": "আয়, ব্যয়, পাওনা ও দেনার হিসাব রাখার অফলাইন অ্যাপ।",
+  "lang": "bn",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3f7fb",
+  "theme_color": "#0b477f",
+  "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

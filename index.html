@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b477f"><meta name="description" content="আমার হিসাব — আয়, ব্যয়, পাওনা ও দেনার অফলাইন অ্যাপ">
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><title>আমার হিসাব</title>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar"><div class="brand"><div class="brand-icon">৳</div><div><h1>আমার হিসাব</h1><p>আপনার টাকার সহজ হিসাব</p></div></div><button id="installBtn" class="install-btn" hidden>⇩</button></header>
+<main>
+<section id="page-home" class="page active"><div class="welcome"><div><small>স্বাগতম</small><h2>আজকের হিসাব</h2></div><span class="date-chip" id="todayLabel">আজ</span></div>
+<div class="balance-card"><div class="balance-top"><span>💳 মোট বর্তমান ব্যালেন্স</span><small>আমার হিসাব</small></div><strong id="totalBalance">৳ ০</strong><div class="balance-bottom"><div><small>● মোট আয়</small><b id="totalIncome">৳ ০</b></div><div><small>● মোট ব্যয়</small><b id="totalExpense">৳ ০</b></div></div></div>
+<div class="section-title"><h3>আজকের সারাংশ</h3><small>আজ</small></div><div class="summary-grid">
+<div class="summary income"><span class="sum-icon">↙</span><div><small>আজকের আয়</small><b id="todayIncome">৳ ০</b></div></div>
+<div class="summary expense"><span class="sum-icon">↗</span><div><small>আজকের ব্যয়</small><b id="todayExpense">৳ ০</b></div></div>
+<div class="summary receivable"><span class="sum-icon">＋</span><div><small>আমি পাব</small><b id="totalReceivable">৳ ০</b></div></div>
+<div class="summary payable"><span class="sum-icon">−</span><div><small>আমার দেনা</small><b id="totalPayable">৳ ০</b></div></div></div>
+<button class="add-main" id="addNewBtn"><span class="plus">＋</span><span><b>নতুন হিসাব যোগ করুন</b><small>আয়, ব্যয়, পাওনা অথবা দেনা</small></span><i>›</i></button>
+<div class="section-title"><h3>সাম্প্রতিক লেনদেন</h3><button id="viewAllBtn" class="text-button">সব দেখুন</button></div><div id="recentList" class="transaction-list"></div><div id="recentEmpty" class="empty" hidden><b>এখনো কোনো হিসাব নেই</b><p>নতুন হিসাব যোগ করলে এখানে দেখা যাবে।</p></div></section>
+<section id="page-income" class="page"><div class="page-head"><div><small>লেনদেন</small><h2>আয়ের হিসাব</h2></div><button class="primary" data-add="income">＋ আয় যোগ</button></div><div class="page-total green-total"><span>মোট আয়</span><b id="incomeTotal">৳ ০</b></div><input class="search" id="incomeSearch" placeholder="কারণ বা নাম দিয়ে খুঁজুন"><div class="transaction-list" id="incomeList"></div><div class="empty" id="incomeEmpty" hidden>কোনো আয়ের হিসাব নেই।</div></section>
+<section id="page-expense" class="page"><div class="page-head"><div><small>লেনদেন</small><h2>ব্যয়ের হিসাব</h2></div><button class="primary" data-add="expense">＋ ব্যয় যোগ</button></div><div class="page-total red-total"><span>মোট ব্যয়</span><b id="expenseTotal">৳ ০</b></div><input class="search" id="expenseSearch" placeholder="কারণ বা নাম দিয়ে খুঁজুন"><div class="transaction-list" id="expenseList"></div><div class="empty" id="expenseEmpty" hidden>কোনো ব্যয়ের হিসাব নেই।</div></section>
+<section id="page-receivable" class="page"><div class="page-head"><div><small>পাওনা ও আদায়</small><h2>আমি পাব</h2></div><button class="primary" data-add="receivable">＋ পাওনা যোগ</button></div><div class="page-total blue-total"><span>মোট বাকি পাওনা</span><b id="receivableTotal">৳ ০</b></div><input class="search" id="receivableSearch" placeholder="ব্যক্তির নাম দিয়ে খুঁজুন"><div class="transaction-list" id="receivableList"></div><div class="empty" id="receivableEmpty" hidden>কোনো পাওনার হিসাব নেই।</div></section>
+<section id="page-payable" class="page"><div class="page-head"><div><small>দেনা ও পরিশোধ</small><h2>আমার দেনা</h2></div><button class="primary" data-add="payable">＋ দেনা যোগ</button></div><div class="page-total orange-total"><span>মোট বাকি দেনা</span><b id="payableTotal">৳ ০</b></div><input class="search" id="payableSearch" placeholder="ব্যক্তির নাম দিয়ে খুঁজুন"><div class="transaction-list" id="payableList"></div><div class="empty" id="payableEmpty" hidden>কোনো দেনার হিসাব নেই।</div></section>
+</main>
+<nav class="bottom-nav"><button class="nav-item active" data-page="home"><span>⌂</span><small>হোম</small></button><button class="nav-item" data-page="income"><span>↙</span><small>আয়</small></button><button class="nav-item" data-page="expense"><span>↗</span><small>ব্যয়</small></button><button class="nav-item" data-page="receivable"><span>＋</span><small>পাওনা</small></button><button class="nav-item" data-page="payable"><span>−</span><small>দেনা</small></button></nav>
+</div>
+<dialog id="entryDialog"><form id="entryForm"><div class="dialog-head"><div><small>নতুন তথ্য</small><h2 id="dialogTitle">নতুন হিসাব যোগ করুন</h2></div><button type="button" id="closeDialog" class="close">×</button></div>
+<div class="kind-picker"><label><input type="radio" name="kind" value="income" checked><span>🟢 আয়</span></label><label><input type="radio" name="kind" value="expense"><span>🔴 ব্যয়</span></label><label><input type="radio" name="kind" value="receivable"><span>🟡 পাওনা</span></label><label><input type="radio" name="kind" value="payable"><span>🔵 দেনা</span></label></div>
+<label class="field">ব্যক্তির নাম <em>*</em><input id="person" required maxlength="80" placeholder="যেমন: রহিম"></label><label class="field">কারণ / বিবরণ <em>*</em><input id="reason" required maxlength="120" placeholder="যেমন: বাজার, বেতন, পণ্য বিক্রি"></label><div class="form-row"><label class="field">মোট টাকা (৳) <em>*</em><input id="amount" type="number" min="0.01" step="0.01" required placeholder="৫০০"></label><label class="field">তারিখ <em>*</em><input id="date" type="date" required></label></div><label class="field" id="settledWrap" hidden>জমা / পরিশোধ (৳)<input id="settled" type="number" min="0" step="0.01" value="0"></label><label class="field">নোট (ঐচ্ছিক)<textarea id="note" rows="2" maxlength="300" placeholder="অতিরিক্ত তথ্য"></textarea></label><div class="form-actions"><button type="button" class="secondary" id="cancelDialog">বাতিল</button><button type="submit" class="primary">✓ হিসাব সংরক্ষণ</button></div></form></dialog><div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script><script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(console.error));}</script>
+</body></html>
